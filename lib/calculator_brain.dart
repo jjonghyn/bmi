@@ -6,10 +6,10 @@ class CalculatorBrain {
   final int height;
   final int weight;
 
-  double ?_bmi;
+  double? _bmi;
 
-   dynamic calculateBMI(){
-    _bmi = weight / pow(height/100, 2);
+  dynamic calculateBMI() {
+    _bmi = weight / pow(height / 100, 2);
     return _bmi?.toStringAsFixed(1);
   }
 
@@ -23,7 +23,7 @@ class CalculatorBrain {
     }
   }
 
-  String getInterpretation(){
+  String getInterpretation() {
     if (_bmi! >= 25) {
       return '운동하세요!!';
     } else if (_bmi! > 18.5) {
@@ -32,5 +32,4 @@ class CalculatorBrain {
       return '많이드세요!!';
     }
   }
-
 }

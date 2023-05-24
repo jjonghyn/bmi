@@ -41,15 +41,14 @@ class _InputPageState extends State<InputPage> {
             children: [
               Expanded(
                 child: GestureDetector(
-                  onTap : () {
+                  onTap: () {
                     setState(() {
                       selectedGender = Gender.male;
                     });
                   },
                   child: CardWidget(
-                    onPress: (){
-                      setState(() {
-                      });
+                    onPress: () {
+                      setState(() {});
                     },
                     colour: selectedGender == Gender.male ? activeCardColor : inactiveCardColour,
                     cardChild: IconWidget(
@@ -61,19 +60,18 @@ class _InputPageState extends State<InputPage> {
               ),
               Expanded(
                 child: GestureDetector(
-                  onTap : () {
+                  onTap: () {
                     setState(() {
                       selectedGender = Gender.female;
                     });
                   },
                   child: CardWidget(
-                    
                     colour: selectedGender == Gender.female ? activeCardColor : inactiveCardColour,
-
                     cardChild: IconWidget(
                       icon: FontAwesomeIcons.venus,
                       label: "FeMale",
-                    ), onPress: (){},
+                    ),
+                    onPress: () {},
                   ),
                 ),
               ),
