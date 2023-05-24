@@ -11,7 +11,7 @@ class ResultsPage extends StatelessWidget {
 
   final String bmiResult;
   final String resultText;
-  final String interpretation;
+  final String interpretation; //결과에 대한 코멘트
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +47,7 @@ class ResultsPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    resultText.toUpperCase(),
+                    resultText.toUpperCase(), //대문자로 출력
                     style: resultTextStyle,
                   ),
                   Text(

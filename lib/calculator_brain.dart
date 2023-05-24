@@ -8,11 +8,13 @@ class CalculatorBrain {
 
   double? _bmi;
 
+  //BMI 계산 공식
   dynamic calculateBMI() {
     _bmi = weight / pow(height / 100, 2);
     return _bmi?.toStringAsFixed(1);
   }
 
+  //BMI 계산에 따른 결과값에 대한 비만정도
   String getResult() {
     if (_bmi! >= 25) {
       return 'OverWeight';
@@ -23,6 +25,7 @@ class CalculatorBrain {
     }
   }
 
+  //BMI 계산에 따른 결과값에 대한 비만정도의 솔루션
   String getInterpretation() {
     if (_bmi! >= 25) {
       return '운동하세요!!';
