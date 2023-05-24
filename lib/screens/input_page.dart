@@ -1,10 +1,14 @@
 import 'dart:ui';
 
+import 'package:exam/screens/result_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'icon_content.dart';
-import 'reusable_card.dart';
-import 'constants.dart';
+import '../components/icon_content.dart';
+import '../components/reusable_card.dart';
+import '../constants.dart';
+import '../components/bottom_button.dart';
+import '../components/round_icon_button.dart';
+import 'package:exam/calculator_brain.dart';
 
 enum Gender {
   male,
@@ -37,10 +41,14 @@ class _InputPageState extends State<InputPage> {
             children: [
               Expanded(
                 child: GestureDetector(
+                  onTap : () {
+                    setState(() {
+                      selectedGender = Gender.male;
+                    });
+                  },
                   child: CardWidget(
-                    onPress: () {
+                    onPress: (){
                       setState(() {
-                        selectedGender = Gender.male;
                       });
                     },
                     colour: selectedGender == Gender.male ? activeCardColor : inactiveCardColour,
@@ -53,17 +61,19 @@ class _InputPageState extends State<InputPage> {
               ),
               Expanded(
                 child: GestureDetector(
+                  onTap : () {
+                    setState(() {
+                      selectedGender = Gender.female;
+                    });
+                  },
                   child: CardWidget(
-                    onPress: () {
-                      setState(() {
-                        selectedGender = Gender.female;
-                      });
-                    },
+                    
                     colour: selectedGender == Gender.female ? activeCardColor : inactiveCardColour,
+
                     cardChild: IconWidget(
                       icon: FontAwesomeIcons.venus,
                       label: "FeMale",
-                    ),
+                    ), onPress: (){},
                   ),
                 ),
               ),
@@ -216,45 +226,34 @@ class _InputPageState extends State<InputPage> {
               ),
             ],
           )),
-          Container(
-            height: 80,
-            color: bottomContainerColor,
-            margin: EdgeInsets.only(
-              top: 10,
-            ),
-            width: double.infinity,
-          )
+          BottomButton(
+            buttonTitle: 'CALCULATE',
+            onTap: () {
+              CalculatorBrain calc = CalculatorBrain(
+                height: height,
+                weight: weight,
+              );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultsPage(
+                    bmiResult: calc.calculateBMI(),
+                    interpretation: calc.getInterpretation(),
+                    resultText: calc.getResult(),
+                  ),
+                ),
+              );
+            },
+          ),
         ],
       ),
-      floatingActionButton: Theme(
-        data: ThemeData(accentColor: Colors.purple),
-        child: FloatingActionButton(
-          onPressed: () {},
-          child: const Icon(Icons.add),
-        ),
-      ),
-    );
-  }
-}
-
-class RoundIconButton extends StatelessWidget {
-  const RoundIconButton({Key? key, required this.icon, required this.onPressed}) : super(key: key);
-
-  final IconData icon;
-  final VoidCallback onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      child: Icon(icon),
-      elevation: 0,
-      constraints: BoxConstraints.tightFor(
-        width: 56,
-        height: 56,
-      ),
-      shape: CircleBorder(),
-      fillColor: Color(0xFF4C4F5E),
-      onPressed: onPressed,
+      // floatingActionButton: Theme(
+      //   data: ThemeData(accentColor: Colors.purple),
+      //   child: FloatingActionButton(
+      //     onPressed: () {},
+      //     child: const Icon(Icons.add),
+      //   ),
+      // ),
     );
   }
 }
