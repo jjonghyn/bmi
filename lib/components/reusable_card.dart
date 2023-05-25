@@ -8,9 +8,9 @@ class CardWidget extends StatelessWidget {
     required this.onPress,
   }) : super(key: key);
 
-  final Color colour;
-  final Widget cardChild;
-  final Function onPress;
+  final Color colour; //컬러 변수
+  final Widget cardChild; //위젯변수
+  final Function onPress; //상태변수
 
   @override
   Widget build(BuildContext context) {

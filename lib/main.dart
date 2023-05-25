@@ -19,3 +19,5 @@ class BMICalculator extends StatelessWidget {
       );
   }
 }
+
+//MaterialApp 이란 구글에서 지원하는 MaterialApp 위젯이라고 합니다.

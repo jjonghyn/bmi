@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../constants.dart';
 
+
+//아이콘 위젯 재사용을 위한 클래스
 class IconWidget extends StatelessWidget {
   const IconWidget({
     Key? key,

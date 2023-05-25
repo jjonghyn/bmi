@@ -10,15 +10,15 @@ import '../components/bottom_button.dart';
 import '../components/round_icon_button.dart';
 import 'package:exam/calculator_brain.dart';
 
-enum Gender {
-  male,
-  female,
-}
-
 //inputPage진입
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
+}
+
+enum Gender {
+  male,
+  female,
 }
 
 class _InputPageState extends State<InputPage> {
@@ -31,7 +31,7 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('BMI CALCULATOR'),
+        title: Text('비만측정기'),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -47,9 +47,7 @@ class _InputPageState extends State<InputPage> {
                     });
                   },
                   child: CardWidget(
-                    onPress: () {
-                      setState(() {});
-                    },
+                    onPress: () {},
                     colour: selectedGender == Gender.male ? activeCardColor : inactiveCardColour,
                     cardChild: IconWidget(
                       label: 'Male',
@@ -66,12 +64,12 @@ class _InputPageState extends State<InputPage> {
                     });
                   },
                   child: CardWidget(
+                    onPress: () {},
                     colour: selectedGender == Gender.female ? activeCardColor : inactiveCardColour,
                     cardChild: IconWidget(
                       icon: FontAwesomeIcons.venus,
-                      label: "FeMale",
+                      label: "Female",
                     ),
-                    onPress: () {},
                   ),
                 ),
               ),
@@ -157,23 +155,23 @@ class _InputPageState extends State<InputPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           RoundIconButton(
+                            icon: FontAwesomeIcons.minus,
                             onPressed: () {
                               setState(() {
                                 weight--;
                               });
                             },
-                            icon: FontAwesomeIcons.minus,
                           ),
                           SizedBox(
                             width: 10,
                           ),
                           RoundIconButton(
+                            icon: FontAwesomeIcons.plus,
                             onPressed: () {
                               setState(() {
                                 weight++;
                               });
                             },
-                            icon: FontAwesomeIcons.plus,
                           ),
                         ],
                       ),
@@ -236,8 +234,8 @@ class _InputPageState extends State<InputPage> {
                 MaterialPageRoute(
                   builder: (context) => ResultsPage(
                     bmiResult: calc.calculateBMI(),
-                    interpretation: calc.getInterpretation(),
                     resultText: calc.getResult(),
+                    interpretation: calc.getInterpretation(),
                   ),
                 ),
               );

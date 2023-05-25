@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+//재사용 가능한 텍스트 스타일, 컬러
 const bottomContainerHeight = 80;
 const activeCardColor = Color(0xFF1D1E33);
 const inactiveCardColour = Color(0xFF111328);
