@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:exam/screens/result_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -12,6 +10,8 @@ import 'package:exam/calculator_brain.dart';
 
 //inputPage진입
 class InputPage extends StatefulWidget {
+  const InputPage({Key? key}) : super(key: key);
+
   @override
   _InputPageState createState() => _InputPageState();
 }
@@ -31,7 +31,7 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('비만측정기'),
+        title: const Text('비만측정기'),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -40,37 +40,31 @@ class _InputPageState extends State<InputPage> {
               child: Row(
             children: [
               Expanded(
-                child: GestureDetector(
-                  onTap: () {
+                child: CardWidget(
+                  colour: selectedGender == Gender.male
+                      ? activeCardColor
+                      : inactiveCardColour,
+                  onPress: (){
                     setState(() {
                       selectedGender = Gender.male;
                     });
                   },
-                  child: CardWidget(
-                    onPress: () {},
-                    colour: selectedGender == Gender.male ? activeCardColor : inactiveCardColour,
-                    cardChild: IconWidget(
-                      label: 'Male',
-                      icon: FontAwesomeIcons.mars,
-                    ),
-                  ),
+                  cardChild: const IconWidget(
+                      icon: FontAwesomeIcons.mars, label: 'Male'),
                 ),
               ),
               Expanded(
-                child: GestureDetector(
-                  onTap: () {
+                child: CardWidget(
+                  colour: selectedGender == Gender.female ? activeCardColor : inactiveCardColour,
+                  onPress: (){
                     setState(() {
                       selectedGender = Gender.female;
                     });
                   },
-                  child: CardWidget(
-                    onPress: () {},
-                    colour: selectedGender == Gender.female ? activeCardColor : inactiveCardColour,
-                    cardChild: IconWidget(
-                      icon: FontAwesomeIcons.venus,
-                      label: "Female",
-                    ),
+                  cardChild: const IconWidget(label: 'Female', icon: FontAwesomeIcons.venus,
+
                   ),
+
                 ),
               ),
             ],

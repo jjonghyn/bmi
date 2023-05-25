@@ -27,9 +27,9 @@ class ResultsPage extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              padding: EdgeInsets.all(15),
+              padding: const EdgeInsets.all(15),
               alignment: Alignment.bottomLeft,
-              child: Center(
+              child: const Center(
                 child: Text(
                   'Your Result',
                   style: titleTextStyle,

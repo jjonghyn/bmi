@@ -10,12 +10,12 @@ class CardWidget extends StatelessWidget {
 
   final Color colour; //컬러 변수
   final Widget cardChild; //위젯변수
-  final Function onPress; //상태변수
+  final VoidCallback onPress; //상태변수
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      // onTap: function,
+      onTap: onPress,
       child: Container(
         child: cardChild,
         margin: const EdgeInsets.all(15),
